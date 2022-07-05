@@ -5,6 +5,15 @@ Rails.application.routes.draw do
   sessions: 'user/sessions'
   }
 
+  scope module: :user do
+    resources :users, only: [:show, :edit, :index] do
+    end
+  end
+
+  namespace :admin do
+    resources :users, only: [:index, :show] do
+    end
+  end
 
   root to: "homes#top"
 
