@@ -1,0 +1,23 @@
+shared/linksにリンクを作って、
+ログインページと新規登録ページからゲストログインできるように
+
+def guest
+  user = User.new(user_params)
+  user.name = "ゲスト"
+  user.email = SecureRandom.alphanumeric(15) + "@guest.com"
+  user.password = SecureRandom.alphanumeric(10)
+  user.kind = "1"
+  user.save
+  sign_in user
+  redirect_to root_path
+end
+
+private
+
+def user_params
+  params.permit(:name, :email, :password, :kind)
+end
+
+
+・どのコントローラーに書くべきか(registrations,sessions,users)
+・本登録(＝メールやパスワード等の変更)はどうする？
