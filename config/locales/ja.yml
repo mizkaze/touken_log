@@ -1,0 +1,7 @@
+ja:
+    enums:
+      user:
+        kind:
+          member: "会員"
+          guest: "ゲスト"
+          admin: "管理人"

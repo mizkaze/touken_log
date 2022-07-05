@@ -10,5 +10,11 @@ User.create!(name:  "管理人",
              email: "admin@example.com",
              password:  "test.01",
              password_confirmation: "test.01",
-             admin: true)
+             admin: true,
+             kind: 2)
 
+User.create!(name:  "会員",
+             email: "test@example.com",
+             password:  "test.01",
+             password_confirmation: "test.01",
+             admin: false)

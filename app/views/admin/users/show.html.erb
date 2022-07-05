@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+
+    <div class="mx-auto">
+      <div>
+        <table class="table">
+          <tr>
+            <td>
+              <h3><%= @user.id %></h3>
+            </td>
+            <td>
+              <% if @user.is_active == true %>
+                <h5>有効</h5>
+              <% else %>
+                <h5>無効</h5>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <%= @user.kind_i18n %>
+            </td>
+          </tr>
+          <tr>
+            <th>名前</th>
+            <td><%= @user.name %></td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <%= link_to "マイページ", user_path(@user.id) %>
+            </td>
+          </tr>
+        </table>
+
+        <div>
+          <%= form_with model: @user, url: admin_user_path(@user.id), method: :patch do |f| %>
+            <% if @user.is_active == true %>
+              <%= f.hidden_field :is_active, value: false %>
+              <%= f.submit "このユーザーを無効にする" %>
+            <% else %>
+              <%= f.hidden_field :is_active, value: true %>
+              <%= f.submit "このユーザーを有効にする" %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
