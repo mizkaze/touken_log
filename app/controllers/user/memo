@@ -6,10 +6,10 @@ def guest
   user.name = "ゲスト"
   user.email = SecureRandom.alphanumeric(15) + "@guest.com"
   user.password = SecureRandom.alphanumeric(10)
-  user.kind = "1"
+  user.kind = 1
   user.save
   sign_in user
-  redirect_to root_path
+  redirect_to root_path, notice: "ゲストユーザーとしてログインしました"
 end
 
 private
