@@ -1,10 +1,8 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  # @user = current_user
 
-  # 上手く機能しない
-  def admin_signed_in
-    current_user.kind == admin
-  end
+
 
   protected
 
