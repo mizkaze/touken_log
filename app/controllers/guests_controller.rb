@@ -1,12 +1,14 @@
 class GuestsController < ApplicationController
 
-def new_guest
-  user = User.find_or_create_by!(email: 'guest@example.com',
-                                 ) do |user|
-    user.password = SecureRandom.alphanumeric(10)
+  def new_guest
+    random_value = SecureRandom.hex(10)
+    user = User.create!(name: 'ゲスト',
+                        email: "#{random_value}@guest.com",
+                        kind: 'guest') do |user|
+      user.password = SecureRandom.hex(10)
+    end
+    sign_in user
+    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました'
   end
-  sign_in user
-  redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
-end
 
 end
