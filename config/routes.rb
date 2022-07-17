@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :posts
-  resources :users, only: [:show, :edit, :index] do
-  end
-
   root to: "homes#top"
 
   post '/guests/guest_sign_in', to: 'guests#new_guest'
@@ -17,5 +13,10 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update] do
     end
   end
+
+  resources :users, only: [:show, :edit, :index]
+  resources :posts
+
+
 
 end
