@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:show, :edit, :index]
+  resources :users, only: [:index, :show, :edit, :update]
   resources :posts
 
 

@@ -1,2 +1,35 @@
 <h1>Users#edit</h1>
 <p>Find me in app/views/users/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div>
+      <%= form_with model: @user,url: user_path(@user.id), method: :patch do |f| %>
+        <% if current_user.nil? %>
+
+        <% elsif current_user.kind == "guest" %>
+          <table class="table table-borderless">
+            <tr>
+              <th>ユーザーネーム</th>
+              <td><%= f.text_field :name %></td>
+            </tr>
+            <tr>
+              <th>メールアドレス</th>
+              <td><%= f.text_field :email %></td>
+            </tr>
+            <tr>
+              <th>パスワード</th>
+              <td><%= f.password_field :password %></td>
+              <td><%= f.password_field :password_confirmation %></td>
+            </tr>
+            <%= f.hidden_field :kind, value: "member" %>
+            <tr>
+              <th><%= f.submit '登録' %></th>
+              <tr></tr>
+            </tr>
+          </table>
+        <% else %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
