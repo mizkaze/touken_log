@@ -6,7 +6,7 @@
       <%= form_with model: @user,url: user_path(@user.id), method: :patch do |f| %>
         <% if current_user.nil? %>
         <% elsif current_user.kind == "member" %>
-          <!--画像-->
+          <%= f.file_field :image, accept: "image/*" %>
           <table>
             <tr>
               <th>ユーザーネーム</th>
