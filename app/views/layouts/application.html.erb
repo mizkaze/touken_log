@@ -34,6 +34,7 @@
               <% elsif current_user.kind == "guest" %>
                 <li>guest</li>
                 <li><%= link_to "本登録", edit_user_path(current_user) %></li>
+                <li><%= link_to "別のユーザーでログイン", new_user_session_path %></li>
               <% else %>
               <% end %>
             </ul>
