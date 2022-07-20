@@ -4,6 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  enum kind: { member: 0, guest: 1, admin: 2 }
+  def remember_me
+    true
+  end
+
+  has_many :post, dependent: :destroy
 
 end
