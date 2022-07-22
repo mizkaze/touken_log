@@ -23,6 +23,14 @@ class PostsController < ApplicationController
 
   def update
     post = Post.find(params[:id])
+
+    if params[:post][:image_ids]
+      params[:post][:image_ids].each do |image_id|
+        image = post.images.find(image_id)
+        image.purge
+      end
+    end
+
     post.update(post_params)
     redirect_to post_path(post.id)
   end

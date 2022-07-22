@@ -15,6 +15,10 @@
       </table>
 
       <div>
+        <%= f.file_field :images, accept: "image/*", multiple: true %>
+      </div>
+
+      <div>
         <% if @post.images.attached? %>
         <p>削除する画像をチェックして下さい</p>
         <div style="display: flex; flex-wrap: wrap; width: 750px;">
