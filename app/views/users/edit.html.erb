@@ -7,6 +7,7 @@
         <% if current_user.nil? %>
         <% elsif current_user.kind == "member" %>
           <%= f.file_field :image, accept: "image/*" %>
+          <!--画像のプレビューを作る-->
           <table>
             <tr>
               <th>ユーザーネーム</th>
