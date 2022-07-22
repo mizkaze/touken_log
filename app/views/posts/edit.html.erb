@@ -22,16 +22,18 @@
         <% if @post.images.attached? %>
         <p>削除する画像をチェックして下さい</p>
         <div style="display: flex; flex-wrap: wrap; width: 750px;">
-          <% @post.images.each do |image| %>
           <div style="display: flex; margin:5px 5px 5px 0;">
+            <% @post.images.each do |image| %>
             <div class="d-flex align-items-start">
               <%= f.check_box :image_ids, { multiple: true }, image.id, false %>
             </div>
             <label for="post_image_ids_<%= image.id %>">
               <%= image_tag image, width: 200, height: 'auto' %>
             </label>
+            <% end %>
+
+            <!--ここに追加画像のプレビューを入れたい-->
           </div>
-          <% end %>
         </div>
         <% end %>
       </div>
