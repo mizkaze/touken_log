@@ -15,9 +15,9 @@
       </table>
 
       <div>
-        <%= f.file_field :images, accept: "image/*", multiple: true %>
+        <%= f.file_field :images, accept: "image/*", multiple: true, onchange: "loadImage(this);" %>
+        <p id="preview"></p>
       </div>
-      <!--画像のプレビュー-->
 
       <div>
         <%= f.submit "投稿" %>
@@ -28,3 +28,25 @@
 
   </div>
 </div>
+
+<style>
+#preview img {
+	width: 100px;
+	border: 1px solid #cccccc;
+	vertical-align: text-top;
+}
+</style>
+
+<script>
+  function loadImage(obj)
+  {
+  	document.getElementById('preview').innerHTML = '<p>プレビュー</p>';
+  	for (i = 0; i < obj.files.length; i++) {
+  		var fileReader = new FileReader();
+  		fileReader.onload = (function (e) {
+  			document.getElementById('preview').innerHTML += '<img src="' + e.target.result + '">';
+  		});
+  		fileReader.readAsDataURL(obj.files[i]);
+  	}
+  }
+</script>
