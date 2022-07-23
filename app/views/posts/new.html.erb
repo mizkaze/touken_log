@@ -16,9 +16,10 @@
 
       <div>
         <%= f.file_field :images, accept: "image/*", multiple: true, onchange: "loadImage(this);" %>
-        <div style="display: flex; flex-wrap: wrap; width: 500px;">
-          <p id="preview"></p>
-        </div>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; width: 1000px;">
+        <p id="preview"></p>
       </div>
 
       <div>
@@ -51,4 +52,10 @@
   		fileReader.readAsDataURL(obj.files[i]);
   	}
   }
+  $('.grid').masonry({
+  	// options
+  	itemSelector: '.grid-item',
+  	columnWidth: '.grid-item',
+  	horizontalOrder: true
+  });
 </script>
