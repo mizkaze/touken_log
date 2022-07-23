@@ -16,7 +16,9 @@
 
       <div>
         <%= f.file_field :images, accept: "image/*", multiple: true, onchange: "loadImage(this);" %>
-        <p id="preview"></p>
+        <div style="display: flex; flex-wrap: wrap; width: 500px;">
+          <p id="preview"></p>
+        </div>
       </div>
 
       <div>
@@ -30,11 +32,11 @@
 </div>
 
 <style>
-#preview img {
-	width: 100px;
-	border: 1px solid #cccccc;
-	vertical-align: text-top;
-}
+  #preview img {
+  	width: 250px;
+  	border: 1px solid #ffffff;
+  	vertical-align: top;
+  }
 </style>
 
 <script>
